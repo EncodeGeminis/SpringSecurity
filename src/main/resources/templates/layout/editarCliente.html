@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EditarCliente</title>
+</head>
+
+<body>
+    <section th:fragment="editarCliente">
+        <form th:action="@{/guardarUsuario}" th:object="${usuario}" method="POST" class="was-validated">
+            <input type="hidden" th:field="*{id}" name="idUsuario" />
+            <section th:replace="layout/botones :: botonesEditar"></section>
+
+            <div id="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>[[#{accion.editar}]]</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombre">[[#{usuario.nombre}]]</label>
+                                        <input type="text" th:field="*{nombre}" placeholder="nombre"
+                                            class="form-control" name="nombre" required="true">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                        <input type="text" th:field="*{apellidos}" placeholder="apellidos"
+                                            class="form-control" name="apellidos" required="true">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo">[[#{usuario.correo}]]</label>
+                                        <input type="email" th:field="*{correo}" placeholder="correo"
+                                            class="form-control" name="correo" required="true">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">[[#{usuario.telefono}]]</label>
+                                        <input type="tel" th:field="*{telefono}" placeholder="telefono"
+                                            class="form-control" name="telefono" required="true">
+
+                                    </div>
+                                    <div class="form-group"><label for="saldo">[[#{usuario.saldo}]]</label>
+                                        <input type="number" th:field="*{saldo}" placeholder="saldo"
+                                            class="form-control" name="saldo" required="true" step="any">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-success btn-block" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </section>
+
+</body>
+
+</html>
